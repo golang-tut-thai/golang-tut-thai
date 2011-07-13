@@ -35,3 +35,7 @@ var i int = three
 func main() { fmt.Printf("%d\n", i) }
 
 จะสังเกตเห็นได้ว่าไม่มีการใช้ ; (semicolons) เลย 
+
+
+
+
