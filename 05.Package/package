@@ -1,0 +1,88 @@
+Package
+โปรแกรมก็คือการสร้างแพ็คเกจ ซึ่งอาจจะรวมเอาแพ็คเกจอื่นมาสร้างด้วย
+Go program เป็นการสร้างการเชื่อมโยงได้โดยตั้งค่าที่แพ็คเก็จ
+อีกทั้งแพ็คเกจยังถูกสร้างจากหลายๆไฟล์ประกอบกันได้
+ชื่อที่ใช้ในการ import package สามารถเข้าถึงโดยตรงได้ : packagename.Itemname
+Source file struct
+ในทุก source file ประกอบด้วย
+ -การประการศแพ็คเกจ
+	package fmt
+ -การ import ใช้แพคเกจ
+	import "fmt" //โดยใช้ชื่อเริ่มต้นในการเรียกใช้เลย
+	import myFmt "fmt" //เราสามารถเรียกใช้ fmt ผ่านชื่อ myFmt ได้เลย
+
+A single-file package
+package main //
+import "fmt"
+const hello = "Hello, สวัสดี\n"
+func main(){
+	fmt.Print(hello)
+}
+
+The os package
+Package os จะใช้ในส่วน Exit and access to file I/O,
+command-line arguments, etc.
+// A version of echo(1)
+
+package main
+import (
+	"fmt"
+	"os"
+)
+func main() {
+	if len(os.Args) < 2 { // length of argument slice
+	os.Exit(1)
+	}
+	for i := 1; i < len(os.Args); i++ {
+	fmt.Printf("arg %d: %s\n", i, os.Args[i])
+	}
+} // falling off end == os.Exit(0)
+
+Global and package scope::
+ภายในประกอบด้วย a package, all global variables, functions,
+types, and constants are visible from all the
+package's source files.
+For clients (importers) of the package, names must
+be upper case to be visible: global variables,
+functions, types, constants, plus methods and
+structure fields for global variables and types.
+const hello = "you smell" // package visible
+const Hello = "you smell nice"// globally visible
+const _Bye = "stinko!"// _ is not upper
+
+แตกต่างกันมากกับภาษา C/C++: เพราะ Go จะไม่มีextern, static,private, public.
+================================================================
+ตัวอย่างการสร้าง Package
+
+package transcendental
+import "math"
+var Pi float64
+func init() {
+	Pi = 4*math.Atan(1) // init function computes Pi
+}
+================================================================
+package main
+import (
+	"fmt"
+	"transcendental"
+)
+var twoPi = 2*transcendental.Pi // decl computes twoPi
+func main() {
+	fmt.Printf("2*Pi = %g\n", twoPi)
+}
+====
+Output: 2*Pi = 6.283185307179586
+================================================================
+ 
+วิธีการรันดังนี้
+cd mypackage //เข้าไปในไดเรคทอรี่ที่เราจะรัน
+8g *.go รันไฟล์ทั้งหมดใน mypackage ที่เป็น.go
+
+
+
+
+
+
+
+
+
