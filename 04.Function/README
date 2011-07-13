@@ -36,3 +36,32 @@ return ค่าได้หลายค่าเช่นกัน ดัง co
 แต่เมื่อมีการประกาศ return นั้นจะต้องหาค่าที่มารับ เช่น
 		
 		v, ok := Mysquare(2.5)
+
+Function Literal
+function literal นั้นเป็นการสร้าง function ในตัวแปรได้ ดังตัวอย่าง
+
+	 g := func(i int) { fmt.Println(i) }
+
+โดย ประกาศตัวแปร g โดยมีค่าเท่ากับ function ที่รับค่า int แต่ไม่มีการ return ค่าออกมา(เป็น void)
+และเราสามารถเรียกใช้ได้โดย การเรียก
+			g(2)
+
+โดย เรียกชื่อตัวแปร และใส่ค่าเข้าไปทำให้เรียกเหมือน function
+นอกจากนี้ funcition literal ยังสามารถใช้ใน return ใน function ได้อีกด้วยและยังเก็บค่าของตัวแปรได้อีก เช่น
+
+	func adder() (func(int) int) {
+	     var x int
+	     return func(delta int) int {
+	     	    x += delta
+		    return x
+		}
+	}
+	
+	f := adder()
+	fmt.Print(f(1))
+	fmt.Print(f(20))
+	fmt.Print(f(20))
+	fmt.Print(f(300))
+
+	คำตอบจะได้ออกมาเป็น 1 21 321
+
