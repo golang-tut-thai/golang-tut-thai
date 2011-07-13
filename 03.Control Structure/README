@@ -33,6 +33,47 @@ for i,j := 0,N ; i<j ; i,j = i+1,j-1 { ... }
 
 ==========================================================================================
 
-while
+switch
 
+switch count%7 {
+case 4,5,6: error()                     //ถ้ามีหลายๆ case ที่ทำงานเหมือนกันให้ใส่ , (comma) ระหว่าง case  
+case 3: a *= v; fallthrough         //หากว่าจะให้ fallthrough ต้องพิมพ์ fallthrough เข้าไปด้วย เพราะว่า มันไม่ auto fallthrough
+case 2: a *= v; fallthrough
+case 1: a *= v; fallthrough
+case 0: return a*v
+}
+
+
+switch a {
+case 0: fmt.Printf("0")
+default: fmt.Printf("non-zero")
+}
+
+a, b := x[i], y[j]
+switch {                             //switch รูปแบบนี้จะใช้ได้เฉพาะกับ case ที่เป็น boolean
+case a < b: return -1  
+case a == b: return 0
+case a > b: return 1
+}
+or
+switch a, b := x[i], y[j]; { ... }
+
+
+break , continue  จะมีการทำงานเหมือนภาษาซี แต่จะมีความแตกต่างดังตัวอย่าง
+
+Loop: for i := 0; i < 10; i++ {            // Loop คือ label  หรือชื่อ ของ for
+switch f(i) {
+case 0, 1, 2: break Loop                  // break Loop  คือการหยุดการทำงานของ label ชื่อ Loop ทำให้ for หยุดการทำงาน
+}
+g(i)
+}
+
+for {
+
+fmt.Println("Hello world")
+continue Loop                          // continue Loop  คือการเรียกใช้ label Loop  ให้ทำงาน
+
+}                                
+
+goto Loop                             // กระโดดไปที่  label Loop
 
