@@ -6,6 +6,7 @@ Function
 	}
 	  
 ตัวอย่าง
+
 	func square (f float64) float64 {
 	     return f*f
 	}
