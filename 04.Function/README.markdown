@@ -22,13 +22,12 @@ return ค่าได้หลายค่าเช่นกัน ดัง co
        	    return f*f, true
 	}
 	
-จาก function ข้างบนนั้น จะมีการ return ค่าออกมาสองค่า เป็น type float64 และ boolean เป็นต้น และจะต้องใส่ () ครอบ type ที่ return ด้วย
-และ golang ยังมาสามารถ return ตัวแปรออกไปได้ด้วยเช่น
+จาก function ข้างบนนั้น จะมีการ return ค่าออกมาสองค่า เป็น type float64 และ boolean เป็นต้น และจะต้องใส่ () ครอบ type ที่ return ด้วย และ golang ยังมาสามารถ return ตัวแปรออกไปได้ด้วยเช่น
 
-    	func Mysquare (f float64) (v float64, ok bool) {
-    	     v, ok := f*f, true
-	     return
-	}
+    func Mysquare (f float64) (v float64, ok bool) {
+    	 v, ok := f*f, true
+	 return
+	     }
 
 ซึ่งเราสามารถส่งค่าของตัวแปร v และ ok กลับไปได้ด้วย และเมื่อเจอ keyword return มันจะส่งค่าของ v และ ok กลับไป
 
