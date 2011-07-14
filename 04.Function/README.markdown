@@ -1,11 +1,12 @@
 Function
+========
 การประกาศ Function เราจะใช้ keyword "func" โดยวิธีประกาศเป็นดังนี้
 
 	func function_name (input_argument) (return) {
 	     statement..
 	}
 	  
-ตัวอย่าง
+####ตัวอย่าง####
 
 	func square (f float64) float64 {
 	     return f*f
